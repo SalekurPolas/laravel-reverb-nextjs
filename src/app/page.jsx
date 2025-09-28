@@ -25,6 +25,10 @@ export default function Home() {
           setEvents(prev => [...prev, { type: 'public', data: e }])
         );
 
+        echo.private(`streamer.${user.branches[0].id}`).listen('.streamer', (e) => 
+          setEvents(prev => [...prev, { type: 'private', data: e }])
+        );
+
         echo.private(`App.Models.User.${user.id}`).notification((notification) => 
           setEvents(prev => [...prev, { type: 'notification', data: notification }])
         );
